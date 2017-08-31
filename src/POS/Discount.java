@@ -4,17 +4,14 @@ import java.util.ArrayList;
 
 public class Discount {
 	ArrayList<Integer> SKU;
-	ArrayList<Double> price;
+	
 
 	Discount(){
 		this.SKU = new ArrayList<Integer>();
-		this.price = new ArrayList<Double>();
 		this.init();
-
 	}
-	void addItem(int i, double price) {
+	void addItem(int i) {
 		this.SKU.add(i); 
-		this.price.add(price);
 	}
 
 	double calculate() {
@@ -22,6 +19,5 @@ public class Discount {
 	}
 	public void init() {
 		this.SKU.clear();
-		this.price.clear();
 	}
 }
