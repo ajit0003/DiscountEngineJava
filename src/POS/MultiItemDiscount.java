@@ -13,34 +13,39 @@ public class MultiItemDiscount extends Discount {
 	double calculate() {
         // TODO Auto-generated method stub
         double total_price = 0;
-        double curr_price = 0;
-        int curr_item = 0;
-        int check_item;
-        ArrayList<Integer> checks = new ArrayList<Integer>();
+        Integer curr_item = 0;
+        Integer check_item;
+        
+        DiscountCatalog DC = DiscountCatalog.getInstance();
+        Catalog CAT = new Catalog();
+        
         HashMap<Integer, Integer> count = new HashMap<Integer, Integer>();
-        HashMap<Integer, Double> price = new HashMap<Integer, Double>();
         
         for (int i = 0; i < this.SKU.size(); i++){
             curr_item = SKU.get(i);
-            curr_price = price.get(i);
-            check_item = curr_item / 10;
+            check_item = curr_item;// / 10;
             
             if (count.containsKey(check_item)){
             	count.put(check_item, count.get(check_item) + 1);
             }else{
             	count.put(check_item, 1);
-            	price.put(check_item, curr_price);
-            }
-            
-            if (checks.contains(check_item)){
-                total_price += (curr_price * 0.7);
-                checks.remove(checks.indexOf(check_item));
-            }
-            else{
-                total_price += curr_price;
-                checks.add(check_item);
             }
         }
+        
+        for (Integer curr_item2: count.keySet()) {
+             Integer curr_count2=count.get(curr_item2);
+             
+             ItemDiscount ItemD = DC.getDiscountItem(curr_item2);
+             
+             Integer dis_count = curr_count2 / ItemD.getItemNumber();
+             curr_count2 = curr_count2 - dis_count;
+             
+             Double curr_price = CAT.getPrice(curr_item2);
+             
+             total_price += curr_count2 * curr_price;
+             total_price += dis_count * ((100-ItemD.getDiscount())/100) * curr_price;
+             
+        } 
         return total_price;
     }
 	
