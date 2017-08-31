@@ -62,6 +62,11 @@
             <classpath refid="POS.classpath"/>
         </junit>
     </target>
+    <target name="JUnitCore">
+        <java classname="org.junit.runner.JUnitCore" failonerror="true" fork="yes">
+            <classpath refid="POS.classpath"/>
+        </java>
+    </target>
     <target name="junitreport">
         <junitreport todir="${junit.output.dir}">
             <fileset dir="${junit.output.dir}">
