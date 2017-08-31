@@ -49,7 +49,7 @@ public class Catalog {
 		for(POSProduct p : products) { 
 			   if(p.getId() == id) { 
 			       //found it!
-				   return p.getPrice(id);
+				   return p.getPrice();
 			   }
 			   
 			}

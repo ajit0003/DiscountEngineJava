@@ -13,7 +13,7 @@ public class POSProduct {
 		this.product_price = price;
 	}
 
-	public double getPrice(int id){
+	public double getPrice(){
 		
 		return this.product_price;
 				
