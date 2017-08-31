@@ -18,5 +18,11 @@ public class POSProduct {
 		return this.product_price;
 				
 	}
+	
+	public int getId(){
+		
+		return this.product_ID;
+				
+	}
 
 }

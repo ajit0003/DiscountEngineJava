@@ -44,4 +44,31 @@ public class Catalog {
 		
 	}
 	
+	public double getPrice(int id){
+		
+		for(POSProduct p : products) { 
+			   if(p.getId() == id) { 
+			       //found it!
+				   return p.getPrice(id);
+			   }
+			   
+			}
+		return 0;
+	}
+	
+	public POSProduct getProduct(int id){
+		
+		for(POSProduct p : products) { 
+			   if(p.getId() == id) { 
+			       //found it!
+				   return p;
+			   }
+			   
+			}
+		return null;
+		
+		
+		
+		
+	}
 }
