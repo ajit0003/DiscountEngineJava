@@ -1,6 +1,5 @@
 package POS;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MultiItemDiscount extends Discount {
@@ -13,8 +12,6 @@ public class MultiItemDiscount extends Discount {
 	double calculate() {
         // TODO Auto-generated method stub
         double total_price = 0;
-        Integer curr_item = 0;
-        Integer check_item;
         
         DiscountCatalog DC = DiscountCatalog.getInstance();
         Catalog CAT = new Catalog();
@@ -22,7 +19,9 @@ public class MultiItemDiscount extends Discount {
         HashMap<Integer, Integer> count = new HashMap<Integer, Integer>();
         
         for (int i = 0; i < this.SKU.size(); i++){
-            curr_item = SKU.get(i);
+            Integer curr_item;
+            Integer check_item;
+        	curr_item = SKU.get(i);
             check_item = curr_item;// / 10;
             
             if (count.containsKey(check_item)){
